@@ -1,6 +1,16 @@
 export default function Signup() {
+  function handleSublit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const acquisitionChannel = formData.getAll('acquisition');
+    const fieldValues = Object.fromEntries(formData.entries());
+    fieldValues.acquisition = acquisitionChannel;
+    console.log(fieldValues);
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSublit}>
       <h2>Welcome on board!</h2>
       <p>We just need a little bit of data from you to get you started 🚀</p>
 
