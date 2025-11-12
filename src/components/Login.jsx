@@ -9,6 +9,10 @@ export default function Login() {
   function handleSubmit(event) {
     event.preventDefault();
     console.log(enteredValues);
+    setEnteredValues({
+      email: '',
+      password: '',
+    });
   };
 
   function handleValueCnage(fieldId, value) {
@@ -16,6 +20,14 @@ export default function Login() {
       ...prevState,
       [fieldId]: value,
     }));
+  }
+
+  function handleFormReset(event) {
+    event.preventDefault();
+    setEnteredValues({
+      email: '',
+      password: '',
+    });
   }
 
   return (
@@ -45,7 +57,7 @@ export default function Login() {
       </div>
 
       <p className="form-actions">
-        <button className="button button-flat">Reset</button>
+        <button className="button button-flat" onClick={handleFormReset}>Reset</button>
         <button className="button">Login</button>
       </p>
     </form>

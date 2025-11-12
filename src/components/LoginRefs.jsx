@@ -10,6 +10,8 @@ export default function Login() {
     const password = passwordField.current.value;
 
     console.log({ email, password });
+
+    event.target.reset();
   };
 
   return (
@@ -37,7 +39,7 @@ export default function Login() {
       </div>
 
       <p className="form-actions">
-        <button className="button button-flat">Reset</button>
+        <button className="button button-flat" type="reset">Reset</button>
         <button className="button">Login</button>
       </p>
     </form>
