@@ -15,6 +15,12 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    if (emailIsInvalid || enteredValues.email.trim() === '') {
+      console.log('Email is invalid');
+      return;
+    }
+
     console.log(enteredValues);
     setEnteredValues({
       email: '',
@@ -58,7 +64,6 @@ export default function Login() {
           <label htmlFor="email">Email</label>
           <input
             id="email"
-            type="email"
             name="email"
             value={enteredValues.email}
             onChange={(e) => handleValueCnage('email', e.target.value)}
