@@ -1,4 +1,7 @@
+import { useState } from 'react';
+
 export default function Signup() {
+  const [passwordsDoNotMatch, setPasswordsDoNotMatch] = useState(false);
   function handleSublit(event) {
     event.preventDefault();
 
@@ -6,6 +9,16 @@ export default function Signup() {
     const acquisitionChannel = formData.getAll('acquisition');
     const fieldValues = Object.fromEntries(formData.entries());
     fieldValues.acquisition = acquisitionChannel;
+
+    if (fieldValues.password !== fieldValues['confirm-password']) {
+      setPasswordsDoNotMatch(true);
+      return;
+    }
+
+    if (passwordsDoNotMatch) {
+      setPasswordsDoNotMatch(false);
+    }
+
     console.log(fieldValues);
   }
 
@@ -44,6 +57,9 @@ export default function Signup() {
             name="confirm-password"
             required
           />
+          <div className="control-error">
+            {passwordsDoNotMatch && <p>Passwords must match.</p>}
+          </div>
         </div>
       </div>
 
